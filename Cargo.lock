@@ -96,8 +96,7 @@ dependencies = [
 [[package]]
 name = "epd-waveshare"
 version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b5502a0ed11effff2f47b69b83cf8d4325de86362b5ca37925fa1bf240522bbc"
+source = "git+https://github.com/caemor/epd-waveshare#f98c12160fe211d2cc83188419a9ec4e855c789d"
 dependencies = [
  "bit_field",
  "embedded-graphics-core",
