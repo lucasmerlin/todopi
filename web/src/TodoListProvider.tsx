@@ -7,7 +7,7 @@ import {TodoistApi} from "@doist/todoist-api-typescript";
 
 
 const getTasks = async (client: TodoistApi | null) => {
-    if (!client) return [];
+    if (!client) return undefined;
 
     const tasks = await client.getTasks({
         filter: "today | overdue",
@@ -29,7 +29,10 @@ export const TodoListProvider = ({children}: { children: React.ReactNode }) => {
     });
 
     useEffect(() => {
-        (window as any)["version"] = ((window as any)["version"] || 0) + 1;
+        if (data !== undefined) {
+            (window as any)["version"] = ((window as any)["version"] || 0) + 1;
+            console.log("data changed", data, (window as any)["version"]);
+        }
     }, [data]);
 
     if (!client) return <Navigate to={"/token-form"}/>;

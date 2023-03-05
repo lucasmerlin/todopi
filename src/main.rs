@@ -1,4 +1,5 @@
 use std::fmt::format;
+use std::sync::Arc;
 use std::thread::{sleep, spawn};
 
 use headless_chrome::{Browser, LaunchOptions, Tab};
@@ -9,6 +10,7 @@ mod image;
 mod web;
 
 use clap::Parser;
+use headless_chrome::protocol::cdp::types::Event;
 
 /// Simple program to greet a person
 #[derive(Parser, Debug)]
@@ -35,7 +37,7 @@ fn main() -> anyhow::Result<()> {
         spawn(|| {
             web::serve().expect("Failed to start web server");
         });
-        sleep(std::time::Duration::from_secs(1));
+        sleep(std::time::Duration::from_secs(3));
     }
 
     let browser = Browser::new(LaunchOptions {
@@ -46,6 +48,17 @@ fn main() -> anyhow::Result<()> {
 
     let tab = browser.new_tab()?;
 
+    tab.enable_log()?;
+
+    tab.add_event_listener(Arc::new(move |event: &Event| {
+        match event {
+            Event::LogEntryAdded(log) => {
+                println!("log: {:?}", log);
+            }
+            _ => {}
+        }
+    }))?;
+
     /// Navigate to wikipedia
     tab.navigate_to(&format!("{}?token={}", address, args.todoist_token))?;
 
@@ -54,18 +67,6 @@ fn main() -> anyhow::Result<()> {
 
     sleep(std::time::Duration::from_secs(2));
 
-    /// Take a screenshot of the entire browser window
-    let png = tab.capture_screenshot(
-        Page::CaptureScreenshotFormatOption::Png,
-        None,
-        None,
-        true)?;
-
-
-    let img = image::dither(png)?;
-
-
-    display::display(img)?;
 
     let mut version = get_version(&tab).unwrap_or(0u64);
     loop {

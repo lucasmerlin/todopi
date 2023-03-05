@@ -66,6 +66,19 @@
           "cssFilePath": "plasmic/todo_pi/PlasmicTodoListItem.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "6T15ND_Y-n",
+          "name": "AllDone",
+          "type": "managed",
+          "projectId": "rPHLiaKgVs2doeGeK5nfK5",
+          "renderModuleFilePath": "plasmic/todo_pi/PlasmicAllDone.tsx",
+          "importSpec": {
+            "modulePath": "AllDone.tsx"
+          },
+          "cssFilePath": "plasmic/todo_pi/PlasmicAllDone.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -80,7 +93,13 @@
           "moduleFilePath": "plasmic/todo_pi/icons/PlasmicIcon__CheckBold.tsx"
         }
       ],
-      "images": [],
+      "images": [
+        {
+          "id": "GIqQr0bys",
+          "name": "todopi",
+          "filePath": "plasmic/todo_pi/images/todopi.png"
+        }
+      ],
       "indirect": false,
       "globalContextsFilePath": "",
       "codeComponents": [

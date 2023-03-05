@@ -32,11 +32,14 @@ import {
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
 import TodoListItem from "../../TodoListItem"; // plasmic-import: xZQZUUFdGP/component
+import AllDone from "../../AllDone"; // plasmic-import: 6T15ND_Y-n/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic_todo_pi.module.css"; // plasmic-import: rPHLiaKgVs2doeGeK5nfK5/projectcss
 import sty from "./PlasmicTodoList.module.css"; // plasmic-import: 6AnE5e-hsw/css
+
+import todopiGIqQr0Bys from "./images/todopi.png"; // plasmic-import: GIqQr0bys/picture
 
 export type PlasmicTodoList__VariantMembers = {};
 export type PlasmicTodoList__VariantsArgs = {};
@@ -50,7 +53,9 @@ export const PlasmicTodoList__ArgProps = new Array<ArgPropType>();
 export type PlasmicTodoList__OverridesType = {
   root?: p.Flex<"div">;
   freeBox?: p.Flex<"div">;
+  img?: p.Flex<typeof p.PlasmicImg>;
   todoListItem?: p.Flex<typeof TodoListItem>;
+  allDone?: p.Flex<typeof AllDone>;
 };
 
 export interface DefaultTodoListProps {
@@ -105,9 +110,11 @@ function PlasmicTodoList__RenderFunc(props: {
       )}
     >
       {true ? (
-        <div
+        <p.Stack
+          as={"div"}
           data-plasmic-name={"freeBox"}
           data-plasmic-override={overrides.freeBox}
+          hasGap={true}
           className={classNames(projectcss.all, sty.freeBox)}
         >
           <div
@@ -128,6 +135,26 @@ function PlasmicTodoList__RenderFunc(props: {
               }
             })()}
           </div>
+
+          <p.PlasmicImg
+            data-plasmic-name={"img"}
+            data-plasmic-override={overrides.img}
+            alt={""}
+            className={classNames(sty.img)}
+            displayHeight={"auto" as const}
+            displayMaxHeight={"none" as const}
+            displayMaxWidth={"100%" as const}
+            displayMinHeight={"0" as const}
+            displayMinWidth={"0" as const}
+            displayWidth={"50px" as const}
+            loading={"lazy" as const}
+            src={{
+              src: todopiGIqQr0Bys,
+              fullWidth: 2048,
+              fullHeight: 2048,
+              aspectRatio: undefined
+            }}
+          />
 
           <div
             className={classNames(
@@ -151,7 +178,7 @@ function PlasmicTodoList__RenderFunc(props: {
               }
             })()}
           </div>
-        </div>
+        </p.Stack>
       ) : null}
       {(
         (() => {
@@ -207,14 +234,33 @@ function PlasmicTodoList__RenderFunc(props: {
           })()}
         </TodoListItem>
       ))}
+
+      {(() => {
+        try {
+          return $ctx.todos.length === 0;
+        } catch (e) {
+          if (e instanceof TypeError) {
+            return true;
+          }
+          throw e;
+        }
+      })() ? (
+        <AllDone
+          data-plasmic-name={"allDone"}
+          data-plasmic-override={overrides.allDone}
+          className={classNames("__wab_instance", sty.allDone)}
+        />
+      ) : null}
     </p.Stack>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "freeBox", "todoListItem"],
-  freeBox: ["freeBox"],
-  todoListItem: ["todoListItem"]
+  root: ["root", "freeBox", "img", "todoListItem", "allDone"],
+  freeBox: ["freeBox", "img"],
+  img: ["img"],
+  todoListItem: ["todoListItem"],
+  allDone: ["allDone"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -222,7 +268,9 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   freeBox: "div";
+  img: typeof p.PlasmicImg;
   todoListItem: typeof TodoListItem;
+  allDone: typeof AllDone;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -287,7 +335,9 @@ export const PlasmicTodoList = Object.assign(
   {
     // Helper components rendering sub-elements
     freeBox: makeNodeComponent("freeBox"),
+    img: makeNodeComponent("img"),
     todoListItem: makeNodeComponent("todoListItem"),
+    allDone: makeNodeComponent("allDone"),
 
     // Metadata about props expected for PlasmicTodoList
     internalVariantProps: PlasmicTodoList__VariantProps,
