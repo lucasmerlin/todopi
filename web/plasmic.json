@@ -1,0 +1,106 @@
+{
+  "platform": "react",
+  "code": {
+    "lang": "ts",
+    "scheme": "blackbox",
+    "reactRuntime": "classic"
+  },
+  "style": {
+    "scheme": "css-modules",
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
+  },
+  "images": {
+    "scheme": "files",
+    "publicDir": "../../public",
+    "publicUrlPrefix": "/static/"
+  },
+  "tokens": {
+    "scheme": "theo",
+    "tokensFilePath": "plasmic-tokens.theo.json"
+  },
+  "srcDir": "src/components",
+  "defaultPlasmicDir": "./plasmic",
+  "projects": [
+    {
+      "projectId": "rPHLiaKgVs2doeGeK5nfK5",
+      "projectApiToken": "RRyuo5oI8n4umH2WWpm1JKdIei3XHmUAOFYN1Ujd28uDdHupKWF2SuLTb1yKiCudz3Hxp00SqExcLdqO9oeg",
+      "projectName": "TodoPI",
+      "version": "latest",
+      "cssFilePath": "plasmic/todo_pi/plasmic_todo_pi.module.css",
+      "components": [
+        {
+          "id": "7OyFxXu5fN1w",
+          "name": "Homepage",
+          "type": "managed",
+          "projectId": "rPHLiaKgVs2doeGeK5nfK5",
+          "renderModuleFilePath": "plasmic/todo_pi/PlasmicHomepage.tsx",
+          "importSpec": {
+            "modulePath": "Homepage.tsx"
+          },
+          "cssFilePath": "plasmic/todo_pi/PlasmicHomepage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "6AnE5e-hsw",
+          "name": "TodoList",
+          "type": "managed",
+          "projectId": "rPHLiaKgVs2doeGeK5nfK5",
+          "renderModuleFilePath": "plasmic/todo_pi/PlasmicTodoList.tsx",
+          "importSpec": {
+            "modulePath": "TodoList.tsx"
+          },
+          "cssFilePath": "plasmic/todo_pi/PlasmicTodoList.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "xZQZUUFdGP",
+          "name": "TodoListItem",
+          "type": "managed",
+          "projectId": "rPHLiaKgVs2doeGeK5nfK5",
+          "renderModuleFilePath": "plasmic/todo_pi/PlasmicTodoListItem.tsx",
+          "importSpec": {
+            "modulePath": "TodoListItem.tsx"
+          },
+          "cssFilePath": "plasmic/todo_pi/PlasmicTodoListItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        }
+      ],
+      "icons": [
+        {
+          "id": "y8eaOH-HN",
+          "name": "CheckIcon",
+          "moduleFilePath": "plasmic/todo_pi/icons/PlasmicIcon__Check.tsx"
+        },
+        {
+          "id": "1yK8UbNlI",
+          "name": "CheckBoldIcon",
+          "moduleFilePath": "plasmic/todo_pi/icons/PlasmicIcon__CheckBold.tsx"
+        }
+      ],
+      "images": [],
+      "indirect": false,
+      "globalContextsFilePath": "",
+      "codeComponents": [
+        {
+          "id": "NHTfbV8fGe",
+          "name": "PlasmicHead",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "1r45aAzGGv",
+          "name": "Fetcher",
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        }
+      ]
+    }
+  ],
+  "globalVariants": {
+    "variantGroups": []
+  },
+  "wrapPagesWithGlobalContexts": true,
+  "cliVersion": "0.1.218",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.218/dist/plasmic.schema.json"
+}

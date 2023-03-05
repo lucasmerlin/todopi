@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 480px;
+  height: 800px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: calc(0px - 0px);
+  height: calc(100% + 0px);
+}
+.root > :global(.__wab_flex-container) > *,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.root > :global(.__wab_flex-container) > picture > img,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+  margin-top: 0px;
+}
+.freeBox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 8px;
+}
+.text__aYmu {
+  width: auto;
+  height: auto;
+  max-width: 800px;
+  text-align: center;
+  font-size: 32px;
+  color: var(--token-Rq41aSgcX);
+}
+.text__htno6 {
+  width: auto;
+  height: auto;
+  max-width: 800px;
+  text-align: center;
+  font-size: 32px;
+  color: var(--token-Rq41aSgcX);
+}
+.todoListItem:global(.__wab_instance) {
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
