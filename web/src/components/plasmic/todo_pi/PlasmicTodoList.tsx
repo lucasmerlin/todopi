@@ -190,7 +190,9 @@ function PlasmicTodoList__RenderFunc(props: {
               throw e;
             }
           })()}
-          isDue={new Date(currentItem.due.date) < new Date()}
+          isDue={
+            new Date(currentItem.due.date) < new Date(new Date().toDateString())
+          }
           key={currentIndex}
         >
           {(() => {

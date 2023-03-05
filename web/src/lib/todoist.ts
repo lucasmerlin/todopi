@@ -1,10 +1,8 @@
 import {TodoistApi} from "@doist/todoist-api-typescript";
 
-// load token from query string
-const token = new URLSearchParams(window.location.search).get("token");
+export const getClient = () => {
+    const token = new URLSearchParams(window.location.search).get("token") || localStorage.getItem("token");
+    const client = token ? new TodoistApi(token) : null;
 
-if (!token) {
-  throw new Error("No token found in query string");
+    return client;
 }
-
-export const client = new TodoistApi(token);
