@@ -104,7 +104,10 @@ jobs:
         # The two platforms don't agree on how to talk about env vars but they
         # do agree on 'cat' and '$()' so we use that to marshal values between commands.
         run: |
-          apt install -y binutils-arm-linux-gnueabihf
+
+          # Custom changes to this script
+          rustup target add armv7-unknown-linux-musleabihf
+          rustup target add x86_64-unknown-linux-gnu
           # Build frontend
           (cd web && yarn install && yarn build)
           
