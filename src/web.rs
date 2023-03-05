@@ -7,7 +7,7 @@ use axum::routing::get;
 use include_dir::{Dir, include_dir};
 use tokio::runtime;
 
-static STATIC_DIR: Dir<'_> = include_dir!("./web/build");
+static STATIC_DIR: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/web/build");
 
 
 pub fn serve() -> anyhow::Result<()> {
