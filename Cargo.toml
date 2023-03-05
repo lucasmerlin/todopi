@@ -1,5 +1,5 @@
 [package]
-name = "epd-cli"
+name = "todopi"
 version = "0.1.0"
 edition = "2021"
 
@@ -24,3 +24,19 @@ axum = "0.6.10"
 mime_guess = "2"
 clap = { version = "4.1.8", features = ["derive"] }
 include_dir = "0.7.3"
+
+# The profile that 'cargo dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
+
+# Config for 'cargo dist'
+[workspace.metadata.dist]
+# The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.0.4"
+# The preferred Rust toolchain to use in CI (rustup toolchain syntax)
+rust-toolchain-version = "1.67.1"
+# CI backends to support (see 'cargo dist generate-ci')
+ci = ["github"]
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = ["x86_64-unknown-linux-gnu", "armv7-unknown-linux-musleabihf"]

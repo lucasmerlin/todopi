@@ -496,26 +496,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "epd-cli"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "axum",
- "clap 4.1.8",
- "dither",
- "embedded-graphics",
- "embedded-hal 0.2.7",
- "epd-waveshare",
- "headless_chrome",
- "image 0.23.14",
- "include_dir",
- "lazy_static",
- "mime_guess",
- "rppal",
- "tokio",
-]
-
-[[package]]
 name = "epd-waveshare"
 version = "0.5.0"
 source = "git+https://github.com/caemor/epd-waveshare?branch=fix_single_write_for_7in5#43d23c4639579097fda39a30413847722317b9bf"
@@ -1686,6 +1666,26 @@ name = "tinyvec_macros"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
+
+[[package]]
+name = "todopi"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "clap 4.1.8",
+ "dither",
+ "embedded-graphics",
+ "embedded-hal 0.2.7",
+ "epd-waveshare",
+ "headless_chrome",
+ "image 0.23.14",
+ "include_dir",
+ "lazy_static",
+ "mime_guess",
+ "rppal",
+ "tokio",
+]
 
 [[package]]
 name = "tokio"
