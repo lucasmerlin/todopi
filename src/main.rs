@@ -1,13 +1,42 @@
-use std::fs;
-use std::thread::sleep;
+use std::fmt::format;
+use std::thread::{sleep, spawn};
+
 use headless_chrome::{Browser, LaunchOptions, Tab};
 use headless_chrome::protocol::cdp::Page;
 
 mod display;
 mod image;
+mod web;
+
+use clap::Parser;
+
+/// Simple program to greet a person
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    /// Address to load. If this is set, no server will be started.
+    #[arg(short, long)]
+    address: Option<String>,
+
+    /// Todoist token
+    #[arg(short, long)]
+    todoist_token: String,
+}
+
 
 fn main() -> anyhow::Result<()> {
 
+    let args: Args = Args::parse();
+
+    let mut address = "http://localhost:3000";
+    if let Some(addr) = &args.address {
+        address = addr;
+    } else {
+        spawn(|| {
+            web::serve().expect("Failed to start web server");
+        });
+        sleep(std::time::Duration::from_secs(1));
+    }
 
     let browser = Browser::new(LaunchOptions {
         window_size: Some((480, 800)),
@@ -18,7 +47,7 @@ fn main() -> anyhow::Result<()> {
     let tab = browser.new_tab()?;
 
     /// Navigate to wikipedia
-    tab.navigate_to("http://lucasmb.local:3000")?;
+    tab.navigate_to(&format!("{}?token={}", address, args.todoist_token))?;
 
     // /// We should end up on the WebKit-page once navigated
     // let elem = tab.wait_for_element(".plasmic_page_wrapper")?;
