@@ -86,7 +86,7 @@ jobs:
         # For these target platforms
         include:
         - os: ubuntu-20.04
-          dist-args: --artifacts=local --target=armv7-unknown-linux-musleabihf --target=x86_64-unknown-linux-gnu
+          dist-args: --artifacts=local --target=armv7-unknown-linux-musleabihf
           install-dist: curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/v0.0.4/cargo-dist-v0.0.4-installer.sh | sh
 
     runs-on: ${{ matrix.os }}
@@ -98,17 +98,15 @@ jobs:
         run: rustup update 1.67.1 --no-self-update && rustup default 1.67.1
       - name: Install cargo-dist
         run: ${{ matrix.install-dist }}
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: Run cargo-dist
         # This logic is a bit janky because it's trying to be a polyglot between
         # powershell and bash since this will run on windows, macos, and linux!
         # The two platforms don't agree on how to talk about env vars but they
         # do agree on 'cat' and '$()' so we use that to marshal values between commands.
         run: |
-
+          
           # Custom changes to this script
+          sudo apt-get install -y gcc-arm-linux-gnueabihf
           rustup target add armv7-unknown-linux-musleabihf
           rustup target add x86_64-unknown-linux-gnu
           # Build frontend
