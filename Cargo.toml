@@ -1,6 +1,6 @@
 [package]
 name = "todopi"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Show your todoist tasks on an e-ink display"
 license = "MIT"
@@ -11,7 +11,7 @@ repository = "lucasmerlin/todopi"
 [dependencies]
 embedded-graphics = "0.7.1"
 embedded-hal = "0.2.4"
-epd-waveshare = { version = "0.5.0", git = "https://github.com/caemor/epd-waveshare", features = ["graphics"], branch = "fix_single_write_for_7in5" }
+epd-waveshare = { git = "https://github.com/caemor/epd-waveshare", features = ["graphics"], branch = "fix_single_write_for_7in5" }
 rppal = { version = "0.14.1", features = ["hal", "hal-unproven"] }
 anyhow = "1"
 

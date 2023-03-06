@@ -68,7 +68,7 @@ fn main() -> anyhow::Result<()> {
     sleep(std::time::Duration::from_secs(2));
 
 
-    let mut version = get_version(&tab).unwrap_or(0u64);
+    let mut version = 0;
     loop {
         sleep(std::time::Duration::from_secs(1));
         let w_version = tab.evaluate("window.version", false)?;
