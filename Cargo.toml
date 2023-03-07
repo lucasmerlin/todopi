@@ -1,6 +1,6 @@
 [package]
 name = "todopi"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "Show your todoist tasks on an e-ink display"
 license = "MIT"

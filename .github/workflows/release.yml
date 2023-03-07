@@ -106,7 +106,7 @@ jobs:
         run: |
           
           # Custom changes to this script
-          sudo apt-get install -y gcc-arm-linux-gnueabihf
+          sudo apt-get install -y gcc-armv7-unknown-linux-gnueabihf
           rustup target add armv7-unknown-linux-musleabihf
           rustup target add x86_64-unknown-linux-gnu
           # Build frontend
